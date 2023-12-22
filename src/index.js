@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// import Record from 'neo4j-driver';
+var Record =require('neo4j-driver');
 var neo4j = require('neo4j-driver');
-// import Record from 'neo4j-driver/lib/record.js'
 
 
 const URI = 'neo4j+s://ac4ba3f7.databases.neo4j.io'
@@ -33,8 +34,8 @@ function HelloWorld() {
     return
   }
   const { records, summary, keys } = await driver.executeQuery(
-    // 'MATCH (n) RETURN n.name AS name',
-    'MATCH (p)-[q]->(r) return q',
+    'MATCH (n) RETURN n.name AS name',
+    // 'MATCH (p)-[q]->(r) return q',
     { age: 42 },
     { database: 'neo4j' }
 
@@ -50,11 +51,11 @@ function HelloWorld() {
   )
   console.log('>> Results')
   for( let i=0; i<records.length;i++) {
-     console.log(records[i]) 
+    //  console.log(records[i]) 
 
-  // for(Record of records) {
-  //   console.log(Record.get('name'))
-  // }
+  for(Record of records) {
+    console.log(Record.get('name'))
+  }
   
   }
 
