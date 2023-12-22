@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 var neo4j = require('neo4j-driver');
+// import Record from 'neo4j-driver/lib/record.js'
+
 
 const URI = 'neo4j+s://ac4ba3f7.databases.neo4j.io'
 const USER = 'neo4j'
@@ -31,9 +33,13 @@ function HelloWorld() {
     return
   }
   const { records, summary, keys } = await driver.executeQuery(
-    'MATCH (n) RETURN n.name AS name',
+    // 'MATCH (n) RETURN n.name AS name',
+    'MATCH (p)-[q]->(r) return q',
     { age: 42 },
     { database: 'neo4j' }
+
+    
+
   )
   
   // Summary information
@@ -42,6 +48,16 @@ function HelloWorld() {
     `returned ${records.length} records ` +
     `in ${summary.resultAvailableAfter} ms.`
   )
+  console.log('>> Results')
+  for( let i=0; i<records.length;i++) {
+     console.log(records[i]) 
+
+  // for(Record of records) {
+  //   console.log(Record.get('name'))
+  // }
+  
+  }
+
 
   // Use the driver to run queries
 
