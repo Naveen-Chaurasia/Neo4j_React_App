@@ -18,6 +18,9 @@ function HelloWorld() {
 
 }
 
+
+
+
 (async () => {
   var neo4j = require('neo4j-driver')
 
@@ -34,12 +37,10 @@ function HelloWorld() {
     return
   }
   const { records, summary, keys } = await driver.executeQuery(
-    'MATCH (n) RETURN n.name AS name',
-    // 'MATCH (p)-[q]->(r) return q',
+    // 'MATCH (n) RETURN n.name AS name',
+     'MATCH (p)-[q]->(r) return p.uid, q.quantity, r.uid, r.gwp_100',
     { age: 42 },
     { database: 'neo4j' }
-
-    
 
   )
   
@@ -53,8 +54,30 @@ function HelloWorld() {
   for( let i=0; i<records.length;i++) {
     //  console.log(records[i]) 
 
+    //for nodes
+  // for(Record of records) {
+  //   console.log(Record.get('name'))
+  // }
+
+  //for relationships
   for(Record of records) {
-    console.log(Record.get('name'))
+    console.log(Record)
+    // let sum = 0;
+    // for(let i=0; i<edges.length; i++){
+    //     let edge = edges[i];
+    //     // quantity
+    //     let q = edge.data.quantity;
+    //     q = (q != null) ? parseFloat(q) : 1;
+    //     // end node's gwp_100
+    //     let endNode = Model.getNodeById(edge.data.target);
+    //     let gwp_100 = endNode.data.gwp_100;
+    //     gwp_100 = (gwp_100 == null) ? 0 : gwp_100;
+    //     sum += (gwp_100 * q);
+    // }
+    // return (sum == 0) ? '' : sum;
+
+
+
   }
   
   }
