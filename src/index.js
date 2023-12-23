@@ -2,19 +2,30 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+
 import reportWebVitals from './reportWebVitals';
+import FusionCharts from './components/fusioncharts';
 // import Record from 'neo4j-driver';
 var Record =require('neo4j-driver');
 var neo4j = require('neo4j-driver');
+// import FusionCharts from './components/fusioncharts';
 
 
-const URI = 'neo4j+s://ac4ba3f7.databases.neo4j.io'
+// const URI = 'neo4j+s://ac4ba3f7.databases.neo4j.io'
+// const USER = 'neo4j'
+// const PASSWORD = 'AWKEeX3JP4VQaD5ch-O6Z_2kuu6ksfJWCUCwdIFJHR0'
+
+
+const URI = 'neo4j+s://b462de17.databases.neo4j.io'
 const USER = 'neo4j'
-const PASSWORD = 'AWKEeX3JP4VQaD5ch-O6Z_2kuu6ksfJWCUCwdIFJHR0'
+const PASSWORD = 'VDjwtzYXuFnG5Sdnt6H5-jeCFbEvzqDazrJTlkduJd4'
+
 
 function HelloWorld() {
   
-  return <h1 className="greeting">Hello, world!</h1>;
+  return <h1 className="greeting">
+    {/* <FusionCharts  /> */}
+    Hello, world!</h1>;
 
 }
 
@@ -58,10 +69,17 @@ function HelloWorld() {
   // for(Record of records) {
   //   console.log(Record.get('name'))
   // }
-
+  const sampleData=[['from','to','weight']];
   //for relationships
   for(Record of records) {
     console.log(Record)
+    sampleData.push([Record.get('p.uid'),Record.get('r.uid'),Record.get('q.quantity')])
+  }
+  // console.log(type(sampleData));
+  console.log("------------------------------------------------------------------------------------------")
+  console.log(sampleData);    
+
+
     // let sum = 0;
     // for(let i=0; i<edges.length; i++){
     //     let edge = edges[i];
@@ -75,10 +93,6 @@ function HelloWorld() {
     //     sum += (gwp_100 * q);
     // }
     // return (sum == 0) ? '' : sum;
-
-
-
-  }
   
   }
 
@@ -95,7 +109,8 @@ function HelloWorld() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <HelloWorld />
+    {/* <HelloWorld /> */}
+    <FusionCharts  />
   </React.StrictMode>
 );
 
