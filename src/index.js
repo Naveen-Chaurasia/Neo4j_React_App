@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 
 import reportWebVitals from './reportWebVitals';
-import FusionCharts from './components/fusioncharts';
+import TusionCharts from './components/Tusioncharts';
 // import Record from 'neo4j-driver';
 var Record =require('neo4j-driver');
 var neo4j = require('neo4j-driver');
@@ -49,7 +49,7 @@ function HelloWorld() {
   }
   const { records, summary, keys } = await driver.executeQuery(
     // 'MATCH (n) RETURN n.name AS name',
-     'MATCH (p)-[q]->(r) return p.uid, q.quantity, r.uid, r.gwp_100',
+     'MATCH (p)-[q]->(r) return p, q, r',
     { age: 42 },
     { database: 'neo4j' }
 
@@ -62,46 +62,130 @@ function HelloWorld() {
     `in ${summary.resultAvailableAfter} ms.`
   )
   console.log('>> Results')
-  for( let i=0; i<records.length;i++) {
-    //  console.log(records[i]) 
-
-    //for nodes
-  // for(Record of records) {
-  //   console.log(Record.get('name'))
-  // }
+  
   const sampleData=[['from','to','weight']];
   //for relationships
   for(Record of records) {
     console.log(Record)
-    sampleData.push([Record.get('p.uid'),Record.get('r.uid'),Record.get('q.quantity')])
+    sampleData.push([Record.get('p'),Record.get('r'),Record.get('q')])
   }
   // console.log(type(sampleData));
   console.log("------------------------------------------------------------------------------------------")
   console.log(sampleData);    
-
-
-    // let sum = 0;
-    // for(let i=0; i<edges.length; i++){
-    //     let edge = edges[i];
-    //     // quantity
-    //     let q = edge.data.quantity;
-    //     q = (q != null) ? parseFloat(q) : 1;
-    //     // end node's gwp_100
-    //     let endNode = Model.getNodeById(edge.data.target);
-    //     let gwp_100 = endNode.data.gwp_100;
-    //     gwp_100 = (gwp_100 == null) ? 0 : gwp_100;
-    //     sum += (gwp_100 * q);
-    // }
-    // return (sum == 0) ? '' : sum;
   
+  
+
+
+  async function getNodeById(id) {
+
+    // let nodes=Record.get('p')
+    for(Record of records)
+    {
+      let m=Record.get('p');
+      let n=Record.get('r');
+      if (m.identity.low==id)
+      {
+        return Record.get('p')
+        // return node;
+      }
+      
+      else if(n.identity.low==id)
+      {
+
+        return Record.get('r')
+      }
+
+      // return node;
+      
+    }
+    // let query='MATCH (n{name: '+'"Burnsville"'+ '})  return n'
+    // return  await driver.executeQuery(
+    //   // 'MATCH (n) RETURN n.name AS name',
+    //   query,
+       
+    //   { age: 42 },
+    //   { database: 'neo4j' }
+  
+    // ).then(token => { return token } )
+
+
+
+       
   }
 
 
-  // Use the driver to run queries
+
+
+
+    const sampleData1=[['from','to','weight']];
+  
+  
+  // let sum = 0;
+  for(Record of records){
+      let edge = Record.get('q');
+      console.log(edge)
+      // quantity
+      console.log("++++++++++++++++++++")
+      console.log(edge.properties)
+      let q = edge.properties.quantity;
+      q = (q != null||undefined) ? parseFloat(q) : 1;
+      console.log(q)
+      // end node's gwp_100
+      console.log(edge.endNodeElementId)
+      console.log(edge.end.low);
+      let s=edge.end.low
+      console.log("++++++++++++++++++++")
+      console.log(s)
+
+      
+      let endNode = getNodeById(edge.end.low);
+
+
+
+
+
+// try {
+//         driver = neo4j.driver(URI,  neo4j.auth.basic(USER, PASSWORD))
+//         const serverInfo = await driver.getServerInfo()
+//         console.log('Connection estabilished')
+//         console.log(serverInfo)
+//       } catch(err) {
+//         console.log(`Connection error\n${err}\nCause: ${err.cause}`)
+//         await driver.close()
+//         return
+//       }
+//       // let query1='MATCH (n{id: '+s+'})  return n'
+//       const { records, summary, keys } = await driver.executeQuery(
+//         // 'MATCH (n) RETURN n.name AS name',
+//         'MATCH (n{identity: "183"}) return n',
+//         // 'MATCH (p)-[q]->(r) return p, q, r',
+//         // query1,
+//         { age: 42 },
+//         { database: 'neo4j' }
+    
+//       )
+//       console.log(
+//         `>> The query ${summary.query.text} ` +
+//         `returned ${records.length} records ` +
+//         `in ${summary.resultAvailableAfter} ms.`
+//       )
+
+
+
+
+
+      console.log("++++++++++++++++++++")
+      console.log(endNode)
+      let gwp_100 = endNode.properties.gwp_100;
+      gwp_100 = (gwp_100 == null) ? 0 : gwp_100;
+      // sum += (gwp_100 * q);
+      let r_gwp_100=gwp_100*q;
+      sampleData1.push([Record.get('p'),Record.get('r'),r_gwp_100])
+  }
+  console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+  console.log(sampleData1)
 
   await driver.close()
-
-
 })();
 
 
@@ -110,7 +194,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* <HelloWorld /> */}
-    <FusionCharts  />
+    <TusionCharts  />
   </React.StrictMode>
 );
 
