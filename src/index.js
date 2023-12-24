@@ -11,14 +11,14 @@ var neo4j = require('neo4j-driver');
 // import FusionCharts from './components/fusioncharts';
 
 
-// const URI = 'neo4j+s://ac4ba3f7.databases.neo4j.io'
-// const USER = 'neo4j'
-// const PASSWORD = 'AWKEeX3JP4VQaD5ch-O6Z_2kuu6ksfJWCUCwdIFJHR0'
-
-
-const URI = 'neo4j+s://b462de17.databases.neo4j.io'
+const URI = 'neo4j+s://ac4ba3f7.databases.neo4j.io'
 const USER = 'neo4j'
-const PASSWORD = 'VDjwtzYXuFnG5Sdnt6H5-jeCFbEvzqDazrJTlkduJd4'
+const PASSWORD = 'AWKEeX3JP4VQaD5ch-O6Z_2kuu6ksfJWCUCwdIFJHR0'
+
+
+// const URI = 'neo4j+s://b462de17.databases.neo4j.io'
+// const USER = 'neo4j'
+// const PASSWORD = 'VDjwtzYXuFnG5Sdnt6H5-jeCFbEvzqDazrJTlkduJd4'
 
 
 function HelloWorld() {
@@ -85,7 +85,7 @@ function HelloWorld() {
       let n=Record.get('r');
       if (m.identity.low==id)
       {
-        return Record.get('p')
+        return  Record.get('p');
         // return node;
       }
       
@@ -98,25 +98,11 @@ function HelloWorld() {
       // return node;
       
     }
-    // let query='MATCH (n{name: '+'"Burnsville"'+ '})  return n'
-    // return  await driver.executeQuery(
-    //   // 'MATCH (n) RETURN n.name AS name',
-    //   query,
-       
-    //   { age: 42 },
-    //   { database: 'neo4j' }
-  
-    // ).then(token => { return token } )
-
-
-
-       
+ 
   }
 
 
-
-
-
+  ////////////////////
     const sampleData1=[['from','to','weight']];
   
   
@@ -138,39 +124,11 @@ function HelloWorld() {
       console.log(s)
 
       
-      let endNode = getNodeById(edge.end.low);
-
-
-
-
-
-// try {
-//         driver = neo4j.driver(URI,  neo4j.auth.basic(USER, PASSWORD))
-//         const serverInfo = await driver.getServerInfo()
-//         console.log('Connection estabilished')
-//         console.log(serverInfo)
-//       } catch(err) {
-//         console.log(`Connection error\n${err}\nCause: ${err.cause}`)
-//         await driver.close()
-//         return
-//       }
-//       // let query1='MATCH (n{id: '+s+'})  return n'
-//       const { records, summary, keys } = await driver.executeQuery(
-//         // 'MATCH (n) RETURN n.name AS name',
-//         'MATCH (n{identity: "183"}) return n',
-//         // 'MATCH (p)-[q]->(r) return p, q, r',
-//         // query1,
-//         { age: 42 },
-//         { database: 'neo4j' }
-    
-//       )
-//       console.log(
-//         `>> The query ${summary.query.text} ` +
-//         `returned ${records.length} records ` +
-//         `in ${summary.resultAvailableAfter} ms.`
-//       )
-
-
+      const endNode = await getNodeById(edge.end.low).then((response)=> {
+        return response;
+      });
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+      console.log((endNode));
 
 
 
@@ -180,7 +138,7 @@ function HelloWorld() {
       gwp_100 = (gwp_100 == null) ? 0 : gwp_100;
       // sum += (gwp_100 * q);
       let r_gwp_100=gwp_100*q;
-      sampleData1.push([Record.get('p'),Record.get('r'),r_gwp_100])
+      sampleData1.push([Record.get('p').properties.uid,Record.get('r').properties.uid,r_gwp_100])
   }
   console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
   console.log(sampleData1)
