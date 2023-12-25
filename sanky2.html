@@ -1,0 +1,869 @@
+<html>
+<head>
+<title>My first chart using FusionCharts Suite XT</title>
+<!-- Include fusioncharts core library -->
+<script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+<!-- Include fusion theme -->
+<script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+<script type="text/javascript">
+    //STEP 2 - Chart Data
+    const dataSource = {
+  chart: {
+   baseFont: "Verdana",
+    baseFontSize: "11",
+    baseFontColor: "#0066cc",
+	 outCnvBaseFont: "Arial",
+    outCnvBaseFontSize: "7",
+    outCnvBaseFontColor: "#633563",
+    caption: "Tunnel Construction Project",
+    subcaption:
+      "",
+    theme: "candy",
+    orientation: "horizontal",
+    linkalpha: 30,
+    linkhoveralpha: 60,
+    nodelabelposition: "start",
+	showLegend: "0"
+  },
+  
+
+  
+  "nodes": [
+   
+  { "label": "Baseline (Concrete Design)" },
+  { "label": "Arch Option 1a (GFRP)" },
+  { "label": "Arch Option 1b (GFRP)" },
+  { "label": "Arch Option 1c (GFRP)" },
+  { "label": "Scope 1-Baseline (Concrete Design)" },
+  { "label": "Scope 3-Baseline (Concrete Design)" },
+  { "label": "Scope 2-Baseline (Concrete Design)" },
+  { "label": "Scope 1-Arch Option 1a (GFRP)" },
+  { "label": "Scope 3-Arch Option 1a (GFRP)" },
+  { "label": "Scope 2-Arch Option 1a (GFRP)" },
+  { "label": "Scope 1-Arch Option 1b (GFRP)" },
+  { "label": "Scope 3-Arch Option 1b (GFRP)" },
+  { "label": "Scope 2-Arch Option 1b (GFRP)" },
+  { "label": "Scope 1-Arch Option 1c (GFRP)" },
+  { "label": "Scope 3-Arch Option 1c (GFRP)" },
+  { "label": "Scope 2-Arch Option 1c (GFRP)" },
+  { "label": "Excavation" },
+  { "label": "Excavated Soil Transportation" },
+  { "label": "Concrete Transportation" },
+  { "label": "Gravel" },
+  { "label": "Gravel Transportation" },
+  { "label": "GFRP Panels" },
+  { "label": "GFRP Panel Transportation" },
+  { "label": "GFRP Tension Bars" },
+  { "label": "GFRP Tension Bars Transport" },
+  { "label": "Fire Liner" },
+  { "label": "Fire Liner Transportation" },
+  { "label": "Backfill Soil Transportation" },
+  { "label": "Average site impacts" },
+  { "label": "Average energy and fuel use in construction site" },
+  { "label": "Energy use on the site (Electricity Saudi)" },
+  { "label": "Diesel" },
+  { "label": "Waste" },
+  { "label": "Maintenance Water" },
+  { "label": "Fire Liner replacement" },
+  { "label": "Fire Liner Transportation replacement" },
+  { "label": "Base Concrete" },
+  { "label": "Construction concrete waste" },
+  { "label": "Waste disposal of GFRP" },
+  { "label": "Waste disposal of Fire Liner" },
+  { "label": "Energy recovery from incineration of GFRP" },
+  { "label": "Energy recovery from incineration of Liner" },
+  { "label": "Glass fiber" },
+  { "label": "UP Resin" },
+  { "label": "UPR Based Gelcoat" },
+  { "label": "Catalyst" },
+  { "label": "Carbon Steel" },
+  { "label": "Acetone" },
+  { "label": "Ship transport" },
+  { "label": "Truck transport" },
+  { "label": "Processing (Vacuum Infusion)" },
+  { "label": "Compressed air" },
+  { "label": "Crane operation" },
+  { "label": "Mould" },
+  { "label": "Concrete Transportation (EoL)" },
+  { "label": "Base Concrete (EoL)" },
+  { "label": "Alternative Renewable electricity (Solar)" },
+  { "label": "Alternative Electricity (Saudi Grid +Solar)" },
+  { "label": "Cobalt Octate" },
+  { "label": "Antimony trioxide" },
+  { "label": "Styrene" },
+  { "label": "Maleic anhydride" },
+  { "label": "Neopentyl glycol" },
+  { "label": "Cobalt(II) 2-ethylhexanoate" },
+  { "label": "Fumed Silica" },
+  { "label": "Water" },
+  { "label": "Methyl Ethyl Ketone" },
+  { "label": "Ketone Peroxide" },
+  { "label": "Dimethyl Phthalate" },
+  { "label": "Hydrogen Peroxide" },
+  { "label": "diisobutyrate" }
+
+
+  ],
+  "links": 
+    [
+    [
+        "from",
+        "to",
+        "weight"
+    ],
+    {
+        "from": "Baseline (Concrete Design)",
+        "to": "Scope 1-Baseline (Concrete Design)",
+        "value": 21460254.4
+    },
+    {
+        "from": "Baseline (Concrete Design)",
+        "to": "Scope 3-Baseline (Concrete Design)",
+        "value": 559527711.98128
+    },
+    {
+        "from": "Baseline (Concrete Design)",
+        "to": "Scope 2-Baseline (Concrete Design)",
+        "value": 87281985.44
+    },
+    {
+        "from": "Arch Option 1a (GFRP)",
+        "to": "Scope 1-Arch Option 1a (GFRP)",
+        "value": 22226399.2
+    },
+    {
+        "from": "Arch Option 1a (GFRP)",
+        "to": "Scope 3-Arch Option 1a (GFRP)",
+        "value": 329132507.12
+    },
+    {
+        "from": "Arch Option 1a (GFRP)",
+        "to": "Scope 2-Arch Option 1a (GFRP)",
+        "value": 93995984.32
+    },
+    {
+        "from": "Arch Option 1b (GFRP)",
+        "to": "Scope 1-Arch Option 1b (GFRP)",
+        "value": 24484192.8
+    },
+    {
+        "from": "Arch Option 1b (GFRP)",
+        "to": "Scope 3-Arch Option 1b (GFRP)",
+        "value": 358213942.4
+    },
+    {
+        "from": "Arch Option 1b (GFRP)",
+        "to": "Scope 2-Arch Option 1b (GFRP)",
+        "value": 107423982.08
+    },
+    {
+        "from": "Arch Option 1c (GFRP)",
+        "to": "Scope 1-Arch Option 1c (GFRP)",
+        "value": 20425844.4
+    },
+    {
+        "from": "Arch Option 1c (GFRP)",
+        "to": "Scope 3-Arch Option 1c (GFRP)",
+        "value": 303656377.7026045
+    },
+    {
+        "from": "Arch Option 1c (GFRP)",
+        "to": "Scope 2-Arch Option 1c (GFRP)",
+        "value": 87281985.44
+    },
+    {
+        "from": "Scope 1-Baseline (Concrete Design)",
+        "to": "Excavation",
+        "value": 5384600
+    },
+    {
+        "from": "Scope 3-Baseline (Concrete Design)",
+        "to": "Excavated Soil Transportation",
+        "value": 99153020.00000001
+    },
+    {
+        "from": "Scope 3-Baseline (Concrete Design)",
+        "to": "Base Concrete",
+        "value": 258302880.89087996
+    },
+    {
+        "from": "Scope 3-Baseline (Concrete Design)",
+        "to": "Concrete Transportation",
+        "value": 31573248
+    },
+    {
+        "from": "Scope 3-Baseline (Concrete Design)",
+        "to": "Gravel",
+        "value": 238160
+    },
+    {
+        "from": "Scope 3-Baseline (Concrete Design)",
+        "to": "Gravel Transportation",
+        "value": 1745120.0000000002
+    },
+    {
+        "from": "Scope 3-Baseline (Concrete Design)",
+        "to": "Fire Liner",
+        "value": 6294928
+    },
+    {
+        "from": "Scope 3-Baseline (Concrete Design)",
+        "to": "Fire Liner Transportation",
+        "value": 58720.032
+    },
+    {
+        "from": "Scope 3-Baseline (Concrete Design)",
+        "to": "Backfill Soil Transportation",
+        "value": 57769680.6
+    },
+    {
+        "from": "Scope 1-Baseline (Concrete Design)",
+        "to": "Average site impacts",
+        "value": 13618800
+    },
+    {
+        "from": "Scope 2-Baseline (Concrete Design)",
+        "to": "Average energy and fuel use in construction site",
+        "value": 5108985.44
+    },
+    {
+        "from": "Scope 2-Baseline (Concrete Design)",
+        "to": "Energy use on the site (Electricity Saudi)",
+        "value": 48633000
+    },
+    {
+        "from": "Scope 2-Baseline (Concrete Design)",
+        "to": "Alternative Renewable electricity (Solar)",
+        "value": 5590000
+    },
+    {
+        "from": "Scope 2-Baseline (Concrete Design)",
+        "to": "Alternative Electricity (Saudi Grid +Solar)",
+        "value": 27950000
+    },
+    {
+        "from": "Scope 1-Baseline (Concrete Design)",
+        "to": "Diesel",
+        "value": 2456854.4
+    },
+    {
+        "from": "Scope 3-Baseline (Concrete Design)",
+        "to": "Waste",
+        "value": 9360
+    },
+    {
+        "from": "Scope 3-Baseline (Concrete Design)",
+        "to": "Maintenance Water",
+        "value": 94140.90000000001
+    },
+    {
+        "from": "Scope 3-Baseline (Concrete Design)",
+        "to": "Fire Liner replacement",
+        "value": 56654352
+    },
+    {
+        "from": "Scope 3-Baseline (Concrete Design)",
+        "to": "Fire Liner Transportation replacement",
+        "value": 528480.288
+    },
+    {
+        "from": "Scope 3-Baseline (Concrete Design)",
+        "to": "Base Concrete (EoL)",
+        "value": 37330944
+    },
+    {
+        "from": "Scope 3-Baseline (Concrete Design)",
+        "to": "Concrete Transportation (EoL)",
+        "value": 6314649.6
+    },
+    {
+        "from": "Scope 3-Baseline (Concrete Design)",
+        "to": "Construction concrete waste",
+        "value": 18063360
+    },
+    {
+        "from": "Scope 3-Baseline (Concrete Design)",
+        "to": "Waste disposal of Fire Liner",
+        "value": 56753760
+    },
+    {
+        "from": "Scope 3-Baseline (Concrete Design)",
+        "to": "Energy recovery from incineration of Liner",
+        "value": -71357092.32959999
+    },
+    {
+        "from": "Scope 1-Arch Option 1a (GFRP)",
+        "to": "Excavation",
+        "value": 4914156
+    },
+    {
+        "from": "Scope 3-Arch Option 1a (GFRP)",
+        "to": "Excavated Soil Transportation",
+        "value": 90490177.2
+    },
+    {
+        "from": "Scope 3-Arch Option 1a (GFRP)",
+        "to": "Base Concrete",
+        "value": 32810399.999999996
+    },
+    {
+        "from": "Scope 3-Arch Option 1a (GFRP)",
+        "to": "Concrete Transportation",
+        "value": 5549985
+    },
+    {
+        "from": "Scope 3-Arch Option 1a (GFRP)",
+        "to": "Gravel",
+        "value": 153888
+    },
+    {
+        "from": "Scope 3-Arch Option 1a (GFRP)",
+        "to": "Gravel Transportation",
+        "value": 1127616
+    },
+    {
+        "from": "Scope 3-Arch Option 1a (GFRP)",
+        "to": "GFRP Panels",
+        "value": 75022272
+    },
+    {
+        "from": "Scope 3-Arch Option 1a (GFRP)",
+        "to": "GFRP Panel Transportation",
+        "value": 244929.6
+    },
+    {
+        "from": "Scope 3-Arch Option 1a (GFRP)",
+        "to": "Fire Liner",
+        "value": 6294928
+    },
+    {
+        "from": "Scope 3-Arch Option 1a (GFRP)",
+        "to": "Fire Liner Transportation",
+        "value": 58720.032
+    },
+    {
+        "from": "Scope 3-Arch Option 1a (GFRP)",
+        "to": "Backfill Soil Transportation",
+        "value": 63875419.2
+    },
+    {
+        "from": "Scope 1-Arch Option 1a (GFRP)",
+        "to": "Average site impacts",
+        "value": 14666400
+    },
+    {
+        "from": "Scope 2-Arch Option 1a (GFRP)",
+        "to": "Average energy and fuel use in construction site",
+        "value": 5501984.32
+    },
+    {
+        "from": "Scope 2-Arch Option 1a (GFRP)",
+        "to": "Energy use on the site (Electricity Saudi)",
+        "value": 52374000
+    },
+    {
+        "from": "Scope 2-Arch Option 1a (GFRP)",
+        "to": "Alternative Renewable electricity (Solar)",
+        "value": 6020000
+    },
+    {
+        "from": "Scope 2-Arch Option 1a (GFRP)",
+        "to": "Alternative Electricity (Saudi Grid +Solar)",
+        "value": 30100000
+    },
+    {
+        "from": "Scope 1-Arch Option 1a (GFRP)",
+        "to": "Diesel",
+        "value": 2645843.1999999997
+    },
+    {
+        "from": "Scope 3-Arch Option 1a (GFRP)",
+        "to": "Waste",
+        "value": 10080
+    },
+    {
+        "from": "Scope 3-Arch Option 1a (GFRP)",
+        "to": "Maintenance Water",
+        "value": 102139.8
+    },
+    {
+        "from": "Scope 3-Arch Option 1a (GFRP)",
+        "to": "Fire Liner replacement",
+        "value": 56654352
+    },
+    {
+        "from": "Scope 3-Arch Option 1a (GFRP)",
+        "to": "Fire Liner Transportation replacement",
+        "value": 528480.288
+    },
+    {
+        "from": "Scope 3-Arch Option 1a (GFRP)",
+        "to": "Construction concrete waste",
+        "value": 3175200
+    },
+    {
+        "from": "Scope 3-Arch Option 1a (GFRP)",
+        "to": "Waste disposal of GFRP",
+        "value": 23672800
+    },
+    {
+        "from": "Scope 3-Arch Option 1a (GFRP)",
+        "to": "Waste disposal of Fire Liner",
+        "value": 56753760
+    },
+    {
+        "from": "Scope 3-Arch Option 1a (GFRP)",
+        "to": "Energy recovery from incineration of GFRP",
+        "value": -25723199.999999996
+    },
+    {
+        "from": "Scope 3-Arch Option 1a (GFRP)",
+        "to": "Energy recovery from incineration of Liner",
+        "value": -61669439.99999999
+    },
+    {
+        "from": "Scope 1-Arch Option 1b (GFRP)",
+        "to": "Excavation",
+        "value": 4698772
+    },
+    {
+        "from": "Scope 3-Arch Option 1b (GFRP)",
+        "to": "Excavated Soil Transportation",
+        "value": 86524056.4
+    },
+    {
+        "from": "Scope 3-Arch Option 1b (GFRP)",
+        "to": "Base Concrete",
+        "value": 32810399.999999996
+    },
+    {
+        "from": "Scope 3-Arch Option 1b (GFRP)",
+        "to": "Concrete Transportation",
+        "value": 5549985
+    },
+    {
+        "from": "Scope 3-Arch Option 1b (GFRP)",
+        "to": "Gravel",
+        "value": 175872
+    },
+    {
+        "from": "Scope 3-Arch Option 1b (GFRP)",
+        "to": "Gravel Transportation",
+        "value": 1288704
+    },
+    {
+        "from": "Scope 3-Arch Option 1b (GFRP)",
+        "to": "GFRP Panels",
+        "value": 112694400
+    },
+    {
+        "from": "Scope 3-Arch Option 1b (GFRP)",
+        "to": "GFRP Panel Transportation",
+        "value": 367920
+    },
+    {
+        "from": "Scope 3-Arch Option 1b (GFRP)",
+        "to": "Fire Liner",
+        "value": 6212100
+    },
+    {
+        "from": "Scope 3-Arch Option 1b (GFRP)",
+        "to": "Fire Liner Transportation",
+        "value": 57947.4
+    },
+    {
+        "from": "Scope 3-Arch Option 1b (GFRP)",
+        "to": "Backfill Soil Transportation",
+        "value": 60744271.2
+    },
+    {
+        "from": "Scope 1-Arch Option 1b (GFRP)",
+        "to": "Average site impacts",
+        "value": 16761600
+    },
+    {
+        "from": "Scope 2-Arch Option 1b (GFRP)",
+        "to": "Average energy and fuel use in construction site",
+        "value": 6287982.08
+    },
+    {
+        "from": "Scope 2-Arch Option 1b (GFRP)",
+        "to": "Energy use on the site (Electricity Saudi)",
+        "value": 59856000
+    },
+    {
+        "from": "Scope 2-Arch Option 1b (GFRP)",
+        "to": "Alternative Renewable electricity (Solar)",
+        "value": 6880000
+    },
+    {
+        "from": "Scope 2-Arch Option 1b (GFRP)",
+        "to": "Alternative Electricity (Saudi Grid +Solar)",
+        "value": 34400000
+    },
+    {
+        "from": "Scope 1-Arch Option 1b (GFRP)",
+        "to": "Diesel",
+        "value": 3023820.8
+    },
+    {
+        "from": "Scope 3-Arch Option 1b (GFRP)",
+        "to": "Waste",
+        "value": 11520
+    },
+    {
+        "from": "Scope 3-Arch Option 1b (GFRP)",
+        "to": "Maintenance Water",
+        "value": 102139.8
+    },
+    {
+        "from": "Scope 3-Arch Option 1b (GFRP)",
+        "to": "Fire Liner replacement",
+        "value": 55908900
+    },
+    {
+        "from": "Scope 3-Arch Option 1b (GFRP)",
+        "to": "Fire Liner Transportation replacement",
+        "value": 521526.6
+    },
+    {
+        "from": "Scope 3-Arch Option 1b (GFRP)",
+        "to": "Construction concrete waste",
+        "value": 3175200
+    },
+    {
+        "from": "Scope 3-Arch Option 1b (GFRP)",
+        "to": "Waste disposal of GFRP",
+        "value": 35560000
+    },
+    {
+        "from": "Scope 3-Arch Option 1b (GFRP)",
+        "to": "Waste disposal of Fire Liner",
+        "value": 56007000
+    },
+    {
+        "from": "Scope 3-Arch Option 1b (GFRP)",
+        "to": "Energy recovery from incineration of GFRP",
+        "value": -38640000
+    },
+    {
+        "from": "Scope 3-Arch Option 1b (GFRP)",
+        "to": "Energy recovery from incineration of Liner",
+        "value": -60857999.99999999
+    },
+    {
+        "from": "Scope 1-Arch Option 1c (GFRP)",
+        "to": "Excavation",
+        "value": 4350190
+    },
+    {
+        "from": "Scope 3-Arch Option 1c (GFRP)",
+        "to": "Excavated Soil Transportation",
+        "value": 80105203
+    },
+    {
+        "from": "Scope 3-Arch Option 1c (GFRP)",
+        "to": "Base Concrete",
+        "value": 29164799.999999996
+    },
+    {
+        "from": "Scope 3-Arch Option 1c (GFRP)",
+        "to": "Concrete Transportation",
+        "value": 4933320
+    },
+    {
+        "from": "Scope 3-Arch Option 1c (GFRP)",
+        "to": "Gravel",
+        "value": 142896
+    },
+    {
+        "from": "Scope 3-Arch Option 1c (GFRP)",
+        "to": "Gravel Transportation",
+        "value": 1047072.0000000001
+    },
+    {
+        "from": "Scope 3-Arch Option 1c (GFRP)",
+        "to": "GFRP Panels",
+        "value": 75022272
+    },
+    {
+        "from": "Scope 3-Arch Option 1c (GFRP)",
+        "to": "GFRP Panel Transportation",
+        "value": 244929.6
+    },
+    {
+        "from": "Scope 3-Arch Option 1c (GFRP)",
+        "to": "GFRP Tension Bars",
+        "value": 1135.24957728
+    },
+    {
+        "from": "Scope 3-Arch Option 1c (GFRP)",
+        "to": "GFRP Tension Bars Transport",
+        "value": 4.733027208
+    },
+    {
+        "from": "Scope 3-Arch Option 1c (GFRP)",
+        "to": "Fire Liner",
+        "value": 6294928
+    },
+    {
+        "from": "Scope 3-Arch Option 1c (GFRP)",
+        "to": "Fire Liner Transportation",
+        "value": 58720.032
+    },
+    {
+        "from": "Scope 3-Arch Option 1c (GFRP)",
+        "to": "Backfill Soil Transportation",
+        "value": 53490445.00000001
+    },
+    {
+        "from": "Scope 1-Arch Option 1c (GFRP)",
+        "to": "Average site impacts",
+        "value": 13618800
+    },
+    {
+        "from": "Scope 2-Arch Option 1c (GFRP)",
+        "to": "Average energy and fuel use in construction site",
+        "value": 5108985.44
+    },
+    {
+        "from": "Scope 2-Arch Option 1c (GFRP)",
+        "to": "Energy use on the site (Electricity Saudi)",
+        "value": 48633000
+    },
+    {
+        "from": "Scope 2-Arch Option 1c (GFRP)",
+        "to": "Alternative Renewable electricity (Solar)",
+        "value": 5590000
+    },
+    {
+        "from": "Scope 2-Arch Option 1c (GFRP)",
+        "to": "Alternative Electricity (Saudi Grid +Solar)",
+        "value": 27950000
+    },
+    {
+        "from": "Scope 1-Arch Option 1c (GFRP)",
+        "to": "Diesel",
+        "value": 2456854.4
+    },
+    {
+        "from": "Scope 3-Arch Option 1c (GFRP)",
+        "to": "Waste",
+        "value": 9360
+    },
+    {
+        "from": "Scope 3-Arch Option 1c (GFRP)",
+        "to": "Maintenance Water",
+        "value": 102139.8
+    },
+    {
+        "from": "Scope 3-Arch Option 1c (GFRP)",
+        "to": "Fire Liner replacement",
+        "value": 56654352
+    },
+    {
+        "from": "Scope 3-Arch Option 1c (GFRP)",
+        "to": "Fire Liner Transportation replacement",
+        "value": 528480.288
+    },
+    {
+        "from": "Scope 3-Arch Option 1c (GFRP)",
+        "to": "Construction concrete waste",
+        "value": 2822400
+    },
+    {
+        "from": "Scope 3-Arch Option 1c (GFRP)",
+        "to": "Waste disposal of GFRP",
+        "value": 23672800
+    },
+    {
+        "from": "Scope 3-Arch Option 1c (GFRP)",
+        "to": "Waste disposal of Fire Liner",
+        "value": 56753760
+    },
+    {
+        "from": "Scope 3-Arch Option 1c (GFRP)",
+        "to": "Energy recovery from incineration of GFRP",
+        "value": -25723199.999999996
+    },
+    {
+        "from": "Scope 3-Arch Option 1c (GFRP)",
+        "to": "Energy recovery from incineration of Liner",
+        "value": -61669439.99999999
+    },
+    {
+        "from": "GFRP Panels",
+        "to": "Glass fiber ",
+        "value": 0.5690658077999999
+    },
+    {
+        "from": "GFRP Panels",
+        "to": "UP Resin",
+        "value": 1.2744431264040001
+    },
+    {
+        "from": "GFRP Panels",
+        "to": "UPR Based Gelcoat",
+        "value": 0
+    },
+    {
+        "from": "GFRP Panels",
+        "to": "Catalyst",
+        "value": 0.0021353
+    },
+    {
+        "from": "GFRP Panels",
+        "to": "Carbon Steel",
+        "value": 0.0005002054671724141
+    },
+    {
+        "from": "GFRP Panels",
+        "to": "Acetone",
+        "value": 8.813736465517217e-9
+    },
+    {
+        "from": "GFRP Panels",
+        "to": "Ship transport",
+        "value": 603.0406504238922
+    },
+    {
+        "from": "GFRP Panels",
+        "to": "Truck transport",
+        "value": 234.45985340638336
+    },
+    {
+        "from": "GFRP Panels",
+        "to": "Processing (Vaccum Infusion)",
+        "value": 0.000006156434293165157
+    },
+    {
+        "from": "GFRP Panels",
+        "to": "Compressed air",
+        "value": 0.000011560045756515013
+    },
+    {
+        "from": "GFRP Panels",
+        "to": "Crane operation",
+        "value": 0.000002658591488063661
+    },
+    {
+        "from": "GFRP Panels",
+        "to": "Mould",
+        "value": 6.365962789774946e-13
+    },
+    {
+        "from": "UP Resin",
+        "to": "Cobalt Octate",
+        "value": 0
+    },
+    {
+        "from": "UP Resin",
+        "to": "Antimony trioxide",
+        "value": 0
+    },
+    {
+        "from": "UP Resin",
+        "to": "Styrene",
+        "value": 0
+    },
+    {
+        "from": "UP Resin",
+        "to": "Maleic anhydride",
+        "value": 0
+    },
+    {
+        "from": "UP Resin",
+        "to": "Neopentyl glycol",
+        "value": 0
+    },
+    {
+        "from": "UPR Based Gelcoat",
+        "to": "Styrene",
+        "value": 0
+    },
+    {
+        "from": "UPR Based Gelcoat",
+        "to": "Maleic anhydride",
+        "value": 0
+    },
+    {
+        "from": "UPR Based Gelcoat",
+        "to": "Cobalt(II) 2-ethylhexanoate",
+        "value": 0
+    },
+    {
+        "from": "UPR Based Gelcoat",
+        "to": "Fumed Silicia",
+        "value": 0
+    },
+    {
+        "from": "Catalyst",
+        "to": "Water",
+        "value": 0
+    },
+    {
+        "from": "Catalyst",
+        "to": "Methyl Ethyl Ketone",
+        "value": 0
+    },
+    {
+        "from": "Catalyst",
+        "to": "Ketone Peroxide",
+        "value": 0
+    },
+    {
+        "from": "Catalyst",
+        "to": "Dimethyl Phthalate",
+        "value": 0
+    },
+    {
+        "from": "Catalyst",
+        "to": "Hydrogen Peroxide",
+        "value": 0
+    },
+    {
+        "from": "Catalyst",
+        "to": "diisobutyrate",
+        "value": 0
+    }
+]
+};
+
+FusionCharts.ready(function() {
+  var myChart = new FusionCharts({
+    type: "sankey",
+    renderAt: "chart-container",
+    width: "100%",
+    height: "100%",
+    dataFormat: "json",
+    dataSource
+  }).render();
+});
+
+
+</script>
+</head>
+<body>
+<div id="chart-container">FusionCharts XT will load here!</div>
+</body>
+</html>
+};
+
+FusionCharts.ready(function() {
+  var myChart = new FusionCharts({
+    type: "sankey",
+    renderAt: "chart-container",
+    width: "100%",
+    height: "100%",
+    dataFormat: "json",
+    dataSource
+  }).render();
+});
+
+
+</script>
+</head>
+<body>
+<div id="chart-container">FusionCharts XT will load here!</div>
+</body>
+</html>
