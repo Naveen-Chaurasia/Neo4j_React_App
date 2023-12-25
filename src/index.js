@@ -47,14 +47,15 @@ function HelloWorld() {
     await driver.close()
     return
   }
+
+  
   const { records, summary, keys } = await driver.executeQuery(
     // 'MATCH (n) RETURN n.name AS name',
-     'MATCH (p)-[q]->(r) return p, q, r',
+     'MATCH (p)-[q]->(r) return p.uid, q.quantity, r.uid,r.gwp_100',  
     { age: 42 },
     { database: 'neo4j' }
-
   )
-  
+  /////////////////////////////
   // Summary information
   console.log(
     `>> The query ${summary.query.text} ` +
@@ -67,7 +68,9 @@ function HelloWorld() {
   //for relationships
   for(Record of records) {
     console.log(Record)
-    sampleData.push([Record.get('p'),Record.get('r'),Record.get('q')])
+    let t=Record.get('q.quantity');
+    t = (t != null||undefined) ? parseFloat(t) : 1;
+    sampleData.push({"from":Record.get('p.uid'),"to":Record.get('r.uid'),"value":t*Record.get('r.gwp_100')})
   }
   // console.log(type(sampleData));
   console.log("------------------------------------------------------------------------------------------")
@@ -104,6 +107,7 @@ function HelloWorld() {
 
   ////////////////////
     const sampleData1=[['from','to','weight']];
+    const sampleData2=[{"from":"",'to':"",'value':""}];
   
   
   // let sum = 0;
@@ -111,8 +115,8 @@ function HelloWorld() {
       let edge = Record.get('q');
       console.log(edge)
       // quantity
-      console.log("++++++++++++++++++++")
-      console.log(edge.properties)
+      console.log("2222222222222222222222222222222222222")
+      console.log(edge.properties)  
       let q = edge.properties.quantity;
       q = (q != null||undefined) ? parseFloat(q) : 1;
       console.log(q)
@@ -127,6 +131,8 @@ function HelloWorld() {
       const endNode = await getNodeById(edge.end.low).then((response)=> {
         return response;
       });
+
+
       console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
       console.log((endNode));
 
@@ -138,10 +144,12 @@ function HelloWorld() {
       gwp_100 = (gwp_100 == null) ? 0 : gwp_100;
       // sum += (gwp_100 * q);
       let r_gwp_100=gwp_100*q;
-      sampleData1.push([Record.get('p').properties.uid,Record.get('r').properties.uid,r_gwp_100])
+      sampleData1.push([Record.get('p').properties.uid, Record.get('r').properties.uid, r_gwp_100])
+      sampleData2.push({"from":Record.get('p').properties.uid,'to':Record.get('r').properties.uid,'value':r_gwp_100})
   }
   console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
   console.log(sampleData1)
+  console.log(sampleData2)
 
   await driver.close()
 })();
