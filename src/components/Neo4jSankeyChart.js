@@ -3,6 +3,9 @@ import neo4j from 'neo4j-driver';
 import FusionCharts from 'fusioncharts';
 import Charts from 'fusioncharts/fusioncharts.charts';
 import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
+import PowerCharts from 'fusioncharts/fusioncharts.powercharts';
+import ReactFC from 'react-fusioncharts';
+ReactFC.fcRoot(FusionCharts, PowerCharts, FusionTheme);
 
 // Add necessary FusionCharts modules and theme
 Charts(FusionCharts);
@@ -10,6 +13,8 @@ FusionTheme(FusionCharts);
 
 const Neo4jSankeyChart = () => {
   useEffect(() => {
+
+    
     const URI = 'neo4j+s://ac4ba3f7.databases.neo4j.io';
     const USER = 'neo4j';
     const PASSWORD = 'AWKEeX3JP4VQaD5ch-O6Z_2kuu6ksfJWCUCwdIFJHR0';
@@ -126,7 +131,16 @@ const Neo4jSankeyChart = () => {
 
   return (
     <div>
-      FusionCharts XT will load here!
+      <style>
+        {`
+          #chart-container {
+            width: 100%;
+            height: 100vh; /* Set the desired height */
+            margin: 20px 0; /* Add some margin for spacing */
+          }
+        `}
+      </style>
+      {/* FusionCharts XT will load here! */}
       <div id="chart-container"></div>
     </div>
   );
