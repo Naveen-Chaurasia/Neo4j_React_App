@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import Neo4jSankeyChart from './components/Neo4jSankeyChart';
 
 import reportWebVitals from './reportWebVitals';
 import TusionCharts from './components/Tusioncharts';
@@ -16,15 +17,12 @@ const USER = 'neo4j'
 const PASSWORD = 'AWKEeX3JP4VQaD5ch-O6Z_2kuu6ksfJWCUCwdIFJHR0'
 
 
-// const URI = 'neo4j+s://b462de17.databases.neo4j.io'
-// const USER = 'neo4j'
-// const PASSWORD = 'VDjwtzYXuFnG5Sdnt6H5-jeCFbEvzqDazrJTlkduJd4'
 
 
 function HelloWorld() {
   
   return <h1 className="greeting">
-    {/* <FusionCharts  /> */}
+   {/* <Neo4jSankeyChart /> */}
     Hello, world!</h1>;
 
 }
@@ -158,7 +156,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* <HelloWorld /> */}
-    <TusionCharts  />
+    <Neo4jSankeyChart />
   </React.StrictMode>
 );
 
