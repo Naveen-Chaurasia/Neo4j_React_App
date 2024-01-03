@@ -3,9 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import Neo4jSankeyChart from './components/Neo4jSankeyChart';
+// import Neo4jSankeyChart1 from './components/Neo4jSankeyChart1';
 
 import reportWebVitals from './reportWebVitals';
 import TusionCharts from './components/Tusioncharts';
+import Neo4jSankeyChart1 from './components/Neo4jSankeyChart1';
+import KnowledgeGraph from './components/KnowledgeGraph';
 // import Record from 'neo4j-driver';
 var Record =require('neo4j-driver');
 var neo4j = require('neo4j-driver');
@@ -35,7 +38,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* <HelloWorld /> */}
-    <Neo4jSankeyChart />
+    <Neo4jSankeyChart1 />
+    {/* <KnowledgeGraph /> */}
   </React.StrictMode>
 );
 

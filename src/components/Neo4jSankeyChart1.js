@@ -5,32 +5,27 @@ import Charts from 'fusioncharts/fusioncharts.charts';
 import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.candy';
 import PowerCharts from 'fusioncharts/fusioncharts.powercharts';
 import ReactFC from 'react-fusioncharts';
+import * as d3 from 'd3'; // Import D3.js
 ReactFC.fcRoot(FusionCharts, PowerCharts, FusionTheme);
 
-// Add necessary FusionCharts modules and theme
 Charts(FusionCharts);
 FusionTheme(FusionCharts);
 
-const Neo4jSankeyChart = () => {
+const Neo4jSankeyChart1 = () => {
   useEffect(() => {
+    // const URI = 'neo4j+s://dd0a8c98.databases.neo4j.io';
+    // const USER = 'neo4j';
+    // const PASSWORD = 'ka4impFnMI18nKDVIl_Ln7q9ZtBXHDQD8opLmRMU4tU';
 
 
-    // Tunnel
+    //Tunnel
     const URI = 'neo4j+s://ac4ba3f7.databases.neo4j.io';
     const USER = 'neo4j';
     const PASSWORD = 'AWKEeX3JP4VQaD5ch-O6Z_2kuu6ksfJWCUCwdIFJHR0';
 
 
-  
-
-
-
-
-
-    // Create a driver
     const driver = neo4j.driver(URI, neo4j.auth.basic(USER, PASSWORD));
 
-    // Fetch Nodes
     const sessionNodes = driver.session({ database: 'neo4j' });
     const queryNodes = 'MATCH (n) RETURN n.uid';
 
@@ -48,10 +43,7 @@ const Neo4jSankeyChart = () => {
         );
         console.log('>> Nodes Results');
 
-        // Process records
         records.forEach(record => {
-          console.log(record);
-
           const label = record.get('n.uid');
           nodes.push({ "label": label });
         });
@@ -59,7 +51,6 @@ const Neo4jSankeyChart = () => {
         console.log(nodes);
         console.log('************************');
 
-        // Fetch Links
         const sessionLinks = driver.session({ database: 'neo4j' });
         const queryLinks = 'MATCH (p)-[q]->(r) RETURN p.uid, q.quantity, r.uid, r.gwp_100';
 
@@ -77,9 +68,7 @@ const Neo4jSankeyChart = () => {
             );
             console.log('>> Links Results');
 
-            // Process records
             records.forEach(record => {
-
               let quantity = record.get('q.quantity');
               quantity = (quantity != null || undefined) ? parseFloat(quantity) : 1;
 
@@ -93,7 +82,6 @@ const Neo4jSankeyChart = () => {
             console.log('------------------------------------------------------------------------------------------');
             console.log(links);
 
-            // Create FusionCharts
             FusionCharts.ready(function () {
               const dataSource = {
                 chart: {
@@ -109,7 +97,7 @@ const Neo4jSankeyChart = () => {
                 "links": links
               };
 
-              var myChart = new FusionCharts({
+              const myChart = new FusionCharts({
                 type: "sankey",
                 renderAt: "chart-container",
                 width: "100%",
@@ -117,6 +105,21 @@ const Neo4jSankeyChart = () => {
                 dataFormat: "json",
                 dataSource: dataSource
               }).render();
+
+              // Add D3 interaction
+              const svg = d3.select("#chart-container svg");
+              const link = svg.selectAll(".link");
+              const node = svg.selectAll(".node");
+
+              link.on("click", function (d) {
+                // Highlight related nodes or perform custom action on link click
+                console.log("Link clicked:", d);
+              });
+
+              node.on("click", function (d) {
+                // Highlight related links or perform custom action on node click
+                console.log("Node clicked:", d);
+              });
             });
 
           })
@@ -135,7 +138,7 @@ const Neo4jSankeyChart = () => {
       .finally(() => {
         sessionNodes.close();
       });
-  }, []); // Empty dependency array means this effect runs once after the initial render
+  }, []);
 
   return (
     <div>
@@ -143,15 +146,14 @@ const Neo4jSankeyChart = () => {
         {`
           #chart-container {
             width: 100%;
-            height: 100vh; /* Set the desired height */
-            margin: 20px 0; /* Add some margin for spacing */
+            height: 100vh;
+            margin: 20px 0;
           }
         `}
       </style>
-      {/* FusionCharts XT will load here! */}
       <div id="chart-container"></div>
     </div>
   );
 }
 
-export default Neo4jSankeyChart;
+export default Neo4jSankeyChart1;
