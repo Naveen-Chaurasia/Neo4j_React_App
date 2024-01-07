@@ -13,15 +13,22 @@ FusionTheme(FusionCharts);
 
 const Neo4jSankeyChart1 = () => {
   useEffect(() => {
-    // const URI = 'neo4j+s://dd0a8c98.databases.neo4j.io';
-    // const USER = 'neo4j';
-    // const PASSWORD = 'ka4impFnMI18nKDVIl_Ln7q9ZtBXHDQD8opLmRMU4tU';
+   
 
 
     //Tunnel
-    const URI = 'neo4j+s://ac4ba3f7.databases.neo4j.io';
+    // const URI = 'neo4j+s://ac4ba3f7.databases.neo4j.io';
+    // const USER = 'neo4j';
+    // const PASSWORD = 'AWKEeX3JP4VQaD5ch-O6Z_2kuu6ksfJWCUCwdIFJHR0';
+
+
+    
+ 
+ 
+    // Hospital
+    const URI = 'neo4j+s://dd0a8c98.databases.neo4j.io';
     const USER = 'neo4j';
-    const PASSWORD = 'AWKEeX3JP4VQaD5ch-O6Z_2kuu6ksfJWCUCwdIFJHR0';
+    const PASSWORD = 'ka4impFnMI18nKDVIl_Ln7q9ZtBXHDQD8opLmRMU4tU';
 
 
     const driver = neo4j.driver(URI, neo4j.auth.basic(USER, PASSWORD));
