@@ -20,12 +20,7 @@ const Neo4jSankeyChart = () => {
     const USER = 'neo4j';
     const PASSWORD = 'AWKEeX3JP4VQaD5ch-O6Z_2kuu6ksfJWCUCwdIFJHR0';
 
-
-  
-
-
-
-
+    
 
     // Create a driver
     const driver = neo4j.driver(URI, neo4j.auth.basic(USER, PASSWORD));
@@ -143,8 +138,8 @@ const Neo4jSankeyChart = () => {
         {`
           #chart-container {
             width: 100%;
-            height: 100vh; /* Set the desired height */
-            margin: 20px 0; /* Add some margin for spacing */
+            height: 100vh; 
+            margin: 20px 0;
           }
         `}
       </style>
